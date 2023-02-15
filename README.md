@@ -4,7 +4,7 @@ CS530 Introduction to Scientific Visualization assignment 3 @Purdue.
 
 ## Dataset
 
-!!! TODO !!!
+See [instruction](./instruction.md).
 
 ## Getting Started
 
