@@ -32,6 +32,7 @@ def render_isosurfaces(file_path: str, configs: typing.Sequence[IsosurfaceConfig
         renderer.AddActor(actor)
     colors = vtkNamedColors()
     renderer.SetBackground(colors.GetColor3d("Gray"))  # type: ignore
+    renderer.ResetCamera()
 
     window = vtkRenderWindow()
     window.AddRenderer(renderer)

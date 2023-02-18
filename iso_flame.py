@@ -1,3 +1,4 @@
+from src.camera_settings import add_save_camera_settings_observer, load_camera_settings
 from src.parse_args import parse_args
 from src.render_isosurfaces import IsosurfaceConfig, render_isosurfaces
 from src.vtk_side_effects import import_for_rendering_core
@@ -12,4 +13,8 @@ if __name__ == "__main__":
         {"isovalue": 65000, "color": (0.997341, 0.733545, 0.505167, 0.7)},
     )
 
-    render_isosurfaces(args.input, configs).Start()
+    interactor = render_isosurfaces(args.input, configs)
+    SETTINGS_NAME = "iso_flame"
+    load_camera_settings(interactor, SETTINGS_NAME)
+    add_save_camera_settings_observer(interactor, SETTINGS_NAME)
+    interactor.Start()
