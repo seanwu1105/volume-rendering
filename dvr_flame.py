@@ -1,5 +1,5 @@
 from src.camera_settings import add_save_camera_settings_observer, load_camera_settings
-from src.iso_config import HEAD_CONFIG
+from src.iso_config import FLAME_CONFIG
 from src.parse_args import parse_args
 from src.render_volume import (
     get_ctf_from_config,
@@ -14,12 +14,12 @@ def main():
     import_for_rendering_volume()
     args = parse_args()
 
-    ctf = get_ctf_from_config(HEAD_CONFIG)
+    ctf = get_ctf_from_config(FLAME_CONFIG)
 
-    opacity_func = get_opacity_func_from_config(HEAD_CONFIG, width=100)
+    opacity_func = get_opacity_func_from_config(FLAME_CONFIG, width=250)
 
     interactor = render_volume(args.input, ctf, opacity_func)
-    settings_name = "dvr_head"
+    settings_name = "dvr_flame"
     load_camera_settings(interactor, settings_name)
     add_save_camera_settings_observer(interactor, settings_name)
     interactor.Start()

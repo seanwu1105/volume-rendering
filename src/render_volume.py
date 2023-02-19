@@ -11,6 +11,8 @@ from vtkmodules.vtkRenderingCore import (
 )
 from vtkmodules.vtkRenderingVolume import vtkFixedPointVolumeRayCastMapper
 
+from src.iso_config import IsosurfaceConfig
+
 
 def render_volume(
     filename: str, ctf: vtkColorTransferFunction, opacity_func: vtkPiecewiseFunction
@@ -56,3 +58,19 @@ def render_volume(
     interactor.SetRenderWindow(window)
 
     return interactor
+
+
+def get_ctf_from_config(configs: tuple[IsosurfaceConfig]):
+    ctf = vtkColorTransferFunction()
+    for config in configs:
+        ctf.AddRGBPoint(config["isovalue"], *config["color"][:3])
+    return ctf
+
+
+def get_opacity_func_from_config(configs: tuple[IsosurfaceConfig], width: int):
+    opacity_func = vtkPiecewiseFunction()
+    for config in configs:
+        opacity_func.AddPoint(config["isovalue"] - width, 0)
+        opacity_func.AddPoint(config["isovalue"], config["color"][3])
+        opacity_func.AddPoint(config["isovalue"] + width, 0)
+    return opacity_func
