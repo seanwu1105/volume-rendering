@@ -50,12 +50,13 @@ def _load_camera_settings(camera: vtkCamera, filename: str):
         with open(filename, "r", encoding="utf-8") as f:
             settings: CameraSettings = json.load(f)
     except FileNotFoundError:
-        print(f"File not found: {filename}")
+        print(f"File not found: {filename} (use default camera settings)")
         return
     camera.SetPosition(settings["position"])
     camera.SetFocalPoint(settings["focal_point"])
     camera.SetViewUp(settings["view_up"])
     camera.SetClippingRange(settings["clipping_range"])
+    print(f"Loaded camera settings from {filename}")
 
 
 class CameraSettings(typing.TypedDict):

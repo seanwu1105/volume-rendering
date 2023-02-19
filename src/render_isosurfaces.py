@@ -13,10 +13,7 @@ from vtkmodules.vtkRenderingCore import (
     vtkRenderWindowInteractor,
 )
 
-
-class IsosurfaceConfig(typing.TypedDict):
-    isovalue: int
-    color: tuple[float, float, float, float]
+from src.iso_config import IsosurfaceConfig
 
 
 def render_isosurfaces(file_path: str, configs: typing.Sequence[IsosurfaceConfig]):
@@ -33,14 +30,18 @@ def render_isosurfaces(file_path: str, configs: typing.Sequence[IsosurfaceConfig
     colors = vtkNamedColors()
     renderer.SetBackground(colors.GetColor3d("Gray"))  # type: ignore
     renderer.ResetCamera()
+    renderer.SetUseDepthPeeling(True)
+    renderer.SetMaximumNumberOfPeels(100)
+    renderer.SetOcclusionRatio(0.1)
 
     window = vtkRenderWindow()
     window.AddRenderer(renderer)
     window.SetSize(640, 480)
+    window.SetAlphaBitPlanes(True)
+    window.SetMultiSamples(0)
 
     interactor = vtkRenderWindowInteractor()
     interactor.SetRenderWindow(window)
-    interactor.Initialize()
 
     return interactor
 
