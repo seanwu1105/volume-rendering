@@ -29,7 +29,31 @@ poetry shell
 
 Execute the application:
 
-!!! TODO !!!
+Use isosurface rendering to visualize the head dataset.
+
+```sh
+python iso_head.py -i[--input] <head.vti>
+```
+
+Use isosurface rendering to visualize the flame dataset.
+
+```sh
+python iso_flame.py -i[--input] <flame.vti>
+```
+
+Use volume rendering to visualize the head dataset.
+
+```sh
+python dvr_head.py -i[--input] <head.vti>
+```
+
+Use volume rendering to visualize the flame dataset.
+
+```sh
+python dvr_flame.py -i[--input] <flame.vti>
+```
+
+You can find the datasets in the `assets` directory.
 
 ## Contributing
 
