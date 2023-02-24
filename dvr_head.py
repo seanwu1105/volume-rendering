@@ -16,7 +16,7 @@ def main():
 
     ctf = get_ctf_from_config(HEAD_CONFIG)
 
-    opacity_func = get_opacity_func_from_config(HEAD_CONFIG, width=100)
+    opacity_func = get_opacity_func_from_config(HEAD_CONFIG, width=150)
 
     interactor = render_volume(args.input, ctf, opacity_func)
     settings_name = "dvr_head"

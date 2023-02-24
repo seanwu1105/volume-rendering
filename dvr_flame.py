@@ -16,7 +16,7 @@ def main():
 
     ctf = get_ctf_from_config(FLAME_CONFIG)
 
-    opacity_func = get_opacity_func_from_config(FLAME_CONFIG, width=250)
+    opacity_func = get_opacity_func_from_config(FLAME_CONFIG, width=500)
 
     interactor = render_volume(args.input, ctf, opacity_func)
     settings_name = "dvr_flame"

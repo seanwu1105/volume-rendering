@@ -9,7 +9,7 @@ from vtkmodules.vtkRenderingCore import (
     vtkVolume,
     vtkVolumeProperty,
 )
-from vtkmodules.vtkRenderingVolume import vtkFixedPointVolumeRayCastMapper
+from vtkmodules.vtkRenderingVolume import vtkGPUVolumeRayCastMapper
 
 from src.iso_config import IsosurfaceConfig
 
@@ -20,10 +20,10 @@ def render_volume(
     reader = vtkXMLImageDataReader()
     reader.SetFileName(filename)
 
-    # Use CPU rendering for safety. We should use vtkSmartVolumeMapper but it does
-    # not work with SetSampleDistance.
-    # See https://piazza.com/class/lcp7r42cb4s18t/post/82
-    mapper = vtkFixedPointVolumeRayCastMapper()
+    # Use GPU rendering for performance. We should use vtkSmartVolumeMapper but it does
+    # not work with SetSampleDistance. If GPU rendering is not available, use
+    # vtkFixedPointVolumeRayCastMapper instead.
+    mapper = vtkGPUVolumeRayCastMapper()
     mapper.SetInputConnection(reader.GetOutputPort())
     mapper.SetAutoAdjustSampleDistances(False)
     mapper.SetSampleDistance(0.05)
