@@ -10,7 +10,7 @@ def main():
     args = parse_args()
 
     interactor = render_isosurfaces(args.input, FLAME_CONFIG)
-    settings_name = "iso_flame"
+    settings_name = "flame"
     load_camera_settings(interactor, settings_name)
     add_save_camera_settings_observer(interactor, settings_name)
     interactor.Start()

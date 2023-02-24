@@ -113,6 +113,55 @@ could be wider than the width of others.
 
 ### Flame
 
+#### Fuzziness
+
 | Isosurfacing                                                   | Volume Rendering                                            |
 | -------------------------------------------------------------- | ----------------------------------------------------------- |
 | ![isosurface of flame](./assets/report/iso-flame-combined.png) | ![volume rendering of flame](./assets/report/dvr-flame.png) |
+
+The volume rendering method could express the fuzziness by specifying the
+opacity with the piecewise function. On the other hand, the isosurfacing method
+shows the layer of the model with a sharp boundary.
+
+#### Muscle Texture
+
+| Isosurfacing                                                            | Volume Rendering                                                              |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![isosurface of head muscle](./assets/report/iso-head-muscle-fuzzy.png) | ![volume rendering of head muscle](./assets/report/dvr-head-muscle-fuzzy.png) |
+
+The volume rendering method could express the texture of the muscle tissue. It
+shows the partial muscle tissue is overlapped with the bone tissue in a more
+realistic way in comparison with the isosurfacing method.
+
+#### Shape of the Flame
+
+| Isosurfacing                                                           | Volume Rendering                                                               |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| ![shape of the flame in isovalue](./assets/report/iso-flame-fluid.png) | ![shape of the flame in volume rendering](./assets/report/dvr-flame-fluid.png) |
+
+The volume rendering method presents the shape and the fuzziness of the flame
+more realistically than the isosurfacing method. Intuitively, there is no sharp
+boundary between the visible flame and the environment, and thus it would be
+less accurate to render the model with isosurfacing.
+
+#### Conclusion
+
+For both datasets, I found the volume rendering method is more suitable as it
+has more flexibility to express the fuzziness and the texture of the model.
+
+## Summary Analysis
+
+The advantages of the volume rendering method are:
+
+- It could express the fuzziness of the model.
+- It could express the fluid-like texture of the model.
+- It could express the shape of the model more realistically, such as the flame
+  model in Task 2.
+
+The advantages of the isosurfacing method are:
+
+- It could express the layer of the model with a sharp boundary, which could be
+  more easily understood by the users.
+- It has better performance than the volume rendering method.
+- It could be more suitable for rendering the model with a clear boundary
+  between different parts of the model, such as the head model in Task 1.

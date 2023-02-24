@@ -19,7 +19,7 @@ def main():
     opacity_func = get_opacity_func_from_config(FLAME_CONFIG, width=500)
 
     interactor = render_volume(args.input, ctf, opacity_func)
-    settings_name = "dvr_flame"
+    settings_name = "flame"
     load_camera_settings(interactor, settings_name)
     add_save_camera_settings_observer(interactor, settings_name)
     interactor.Start()
